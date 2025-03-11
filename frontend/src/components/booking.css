@@ -1,0 +1,153 @@
+/* Booking Form Container */
+.booking-form-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(0, 170, 255, 0.15); /* Slightly lighter blue tint */
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.068);
+    box-shadow: 0px 0px 15px rgba(0, 170, 255, 0.6);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form Title */
+.booking-title {
+    font-size: 26px;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 12px;
+}
+
+.booking-subtitle {
+    font-size: 20px;
+    color: #eeeeee;
+    margin-bottom: 15px;
+}
+
+/* Form Labels */
+.booking-form-container label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 14px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Fields - Consistent Look */
+.booking-form-container input,
+.booking-form-container select,
+.booking-form-container textarea {
+    width: 90%;
+    padding: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3); /* Uniform dark background */
+    color: #ffffff; /* White text for contrast */
+    font-size: 16px;
+    outline: none;
+    box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease-in-out;
+}
+
+/* Placeholder Text */
+.booking-form-container input::placeholder,
+.booking-form-container textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Focus & Hover Effects */
+.booking-form-container input:focus,
+.booking-form-container select:focus,
+.booking-form-container textarea:focus {
+    border: 2px solid #00aaff;
+    box-shadow: 0px 0px 10px rgba(0, 170, 255, 0.7);
+}
+
+/* Dropdown Styling */
+.booking-form-container select {
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Dropdown List Items */
+.booking-form-container select option {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000000;
+}
+
+/* Slot Grid */
+.slot-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+/* Slot Button Styling */
+.slot-btn {
+    padding: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: rgba(50, 50, 50, 0.5); /* Unified with inputs */
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 5px 10px rgba(150, 150, 150, 0.3);
+    backdrop-filter: blur(6px);
+}
+
+/* Hover Effect for Slot Button */
+.slot-btn:hover {
+    background: rgba(80, 80, 80, 0.7);
+}
+
+/* Selected Slot Button */
+.slot-btn.selected {
+    background: rgba(0, 123, 255, 0.8);
+    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.6);
+}
+
+/* Booking Buttons */
+.booking-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* Confirm Button - Matches Form */
+.confirm-btn {
+    background: rgba(50, 50, 50, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 8px 20px rgba(0, 0, 255, 0.3);
+}
+
+/* Confirm Button Hover Effect */
+.confirm-btn:hover {
+    background: rgba(80, 80, 80, 0.7);
+    transform: scale(1.05);
+    box-shadow: 0px 10px 25px rgba(0, 0, 255, 0.4);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .booking-form-container {
+        width: 95%;
+        padding: 20px;
+    }
+}

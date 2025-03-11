@@ -1,0 +1,164 @@
+/* General Page Styling */
+.departments-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  background: url("../assets/laptopbg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  backdrop-filter: blur(10px);
+  padding: 40px 20px;
+}
+
+/* Title Styling */
+.departments-title {
+  font-size: 36px;
+  font-weight: bold;
+  font-family: "Orbitron", sans-serif;
+  color: white;
+  text-shadow: 0 0 12px rgba(0, 123, 255, 0.7), 0 0 24px rgba(0, 123, 255, 0.5);
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* Search Bar */
+.search-bar {
+  width: 320px;
+  padding: 12px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 25px;
+  font-size: 16px;
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 30px;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #00aaff;
+  box-shadow: 0 0 12px rgba(0, 170, 255, 0.7);
+}
+
+/* Department Grid */
+.departments-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 15px;
+  max-width: 1600px;
+  width: 100%;
+  padding: 20px;
+  justify-content: center;
+}
+
+/* Individual Department Card */
+.department-card {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 240px;
+  min-height: 170px;
+  animation: fadeInUp 0.6s ease-in-out both;
+  text-decoration: none;
+}
+
+/* Hover and Selected Effects */
+.department-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0px 6px 16px rgba(0, 170, 255, 0.5);
+}
+
+/* Highlight Selected Department */
+.department-card.selected {
+  background: rgba(0, 170, 255, 0.2);
+  border: 2px solid #00aaff;
+  box-shadow: 0px 0px 15px rgba(0, 170, 255, 0.8);
+}
+
+/* Department Title */
+.department-title {
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #00aaff;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-shadow: 0px 0px 8px rgba(0, 170, 255, 0.7);
+}
+
+/* Department Description */
+.department-description {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  max-width: 240px;
+  line-height: 1.5;
+}
+
+/* Booking Form Wrapper */
+.booking-form-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .departments-container {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .department-card {
+    width: 220px;
+    min-height: 160px;
+  }
+
+  .search-bar {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .departments-title {
+    font-size: 28px;
+  }
+
+  .department-title {
+    font-size: 18px;
+  }
+
+  .department-description {
+    font-size: 13px;
+  }
+
+  .search-bar {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}

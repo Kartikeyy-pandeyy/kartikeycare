@@ -1,0 +1,51 @@
+/* Landing Page Styles */
+.landing-wrapper {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("../assets/laptopbg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  backdrop-filter: blur(10px);
+  padding: 40px 20px;
+}
+
+.landing-title {
+  font-size: 38px;
+  font-weight: bold;
+  font-family: "Orbitron", sans-serif;
+  color: white;
+  text-shadow: 0 0 12px rgba(0, 123, 255, 0.7), 0 0 24px rgba(0, 123, 255, 0.5);
+  margin-bottom: 20px;
+}
+
+.landing-description {
+  font-size: 20px;
+  color: white;
+  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.3);
+  max-width: 800px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+/* Updated Button Styling */
+.book-appointment {
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  border-radius: 8px;
+  text-shadow: 0 0 8px rgba(0, 123, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.book-appointment:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3);
+}
