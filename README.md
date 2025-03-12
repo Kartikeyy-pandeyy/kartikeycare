@@ -14,9 +14,26 @@
 ---
 
 ## 📸 Screenshots
-| Home Page 🏠 | Booking Page 📅 | OPD Ticket 🎫 |
-|------------|----------------|------------|
-| ![Home](https://via.placeholder.com/400x200?text=Home+Page) | ![Booking](https://via.placeholder.com/400x200?text=Booking+Page) | ![Ticket](https://via.placeholder.com/400x200?text=OPD+Ticket) |
+### 🔥 Lighthouse Report
+![Lighthouse Report](https://github.com/user-attachments/assets/4251d015-95ff-454e-8465-96a860c49b31)
+
+### 🏠 Landing Page
+![Landing Page](https://github.com/user-attachments/assets/9bec6d42-89a1-410e-befb-d7788cc365e4)
+
+### 🏥 Departments Page
+![Departments Page](https://github.com/user-attachments/assets/bb64c3ad-feee-4488-96fb-d168000917df)
+
+### ⏳ Slot Selection Page
+![Slot Page](https://github.com/user-attachments/assets/4c4b96c7-8758-4928-815f-8f7ba7bee87a)
+
+### 📝 Booking Form
+![Booking Form](https://github.com/user-attachments/assets/0f01b87c-1387-49b1-91e3-b78dbd37463c)
+
+### ✅ Confirmation & Download Ticket Popup
+![Confirmation Popup](https://github.com/user-attachments/assets/6e66e852-ad16-45a6-b0c9-b196727bd4b4)
+
+### 🎫 Sample OPD Ticket PDF
+![OPD Ticket PDF](https://github.com/user-attachments/assets/6e66e852-ad16-45a6-b0c9-b196727bd4b4)
 
 📌 *More coming soon! Stay tuned.* 😉
 
