@@ -33,8 +33,7 @@
 ![Confirmation Popup](https://github.com/user-attachments/assets/4251d015-95ff-454e-8465-96a860c49b31)
 
 ### 🎫 Sample OPD Ticket PDF
-![OPD Ticket PDF](https://github.com/user-attachments/assets/6e66e852-ad16-45a6-b0c9-b196727bd4b4)
-📄 **[Download Full OPD Ticket (PDF)](https://github.com/Kartikeyy-pandeyy/kartikeycare/blob/main/OPD_Ticket_KC12032025110732.pdf)**
+📄 **[Click to view or download Full OPD Ticket (PDF)](https://github.com/Kartikeyy-pandeyy/kartikeycare/blob/main/OPD_Ticket_KC12032025110732.pdf)**
 
 📌 *More coming soon! Stay tuned.* 😉
 
