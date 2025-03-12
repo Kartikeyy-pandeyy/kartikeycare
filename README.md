@@ -24,7 +24,7 @@
 ![Departments Page](https://github.com/user-attachments/assets/4c4b96c7-8758-4928-815f-8f7ba7bee87a)
 
 ### ⏳ Slot Selection
-![Slot Page](![Image](https://github.com/user-attachments/assets/4578045a-e8e2-45c6-a2b3-5759151c048b))
+![Slot Page](https://github.com/user-attachments/assets/4578045a-e8e2-45c6-a2b3-5759151c048b)
 
 ### 📝 Booking Form
 ![Booking Form](https://github.com/user-attachments/assets/6e66e852-ad16-45a6-b0c9-b196727bd4b4)
@@ -33,7 +33,7 @@
 ![Confirmation Popup](https://github.com/user-attachments/assets/4251d015-95ff-454e-8465-96a860c49b31)
 
 ### 🎫 Sample OPD Ticket PDF
-![OPD Ticket PDF]((https://github.com/user-attachments/files/19208741/OPD_Ticket_KC12032025110732.pdf))
+![OPD Ticket PDF](https://github.com/user-attachments/files/19208741/OPD_Ticket_KC12032025110732.pdf)
 
 📌 *More coming soon! Stay tuned.* 😉
 
