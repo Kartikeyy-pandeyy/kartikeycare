@@ -34,10 +34,11 @@
 ---
 
 ## 🚀 Tech Stack
+## 🚀 Tech Stack
 | Frontend | Backend | Database | Deployment |
 |----------|--------|----------|------------|
 | ![React](https://img.shields.io/badge/React.js-61DAFB?style=for-the-badge&logo=react&logoColor=black) | ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white) | ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) | ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white) |
-| ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) | ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) | ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongodb&logoColor=white) | ![AWS](https://img.shields.io/badge/AWS-Lambda-orange?style=for-the-badge&logo=amazonaws) |
+| ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) | ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) | ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongodb&logoColor=white) | ![Railway](https://img.shields.io/badge/Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white) |
 
 ---
 
@@ -78,11 +79,6 @@ Got ideas? Found a bug? Want to make it better? PRs are welcome! 🎉
 3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
 4. Push to the branch: `git push origin feature/AmazingFeature`
 5. Open a Pull Request ✨
-
----
-
-## 📜 License
-🔓 Open-source project under **MIT License**. Feel free to use, modify, and share! 🎉
 
 ---
 
