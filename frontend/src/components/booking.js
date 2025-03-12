@@ -39,7 +39,7 @@ const BookingForm = ({ selectedDepartment }) => {
 
       try {
         const response = await fetch(
-          `http://localhost:5000/api/appointments/available-slots?date=${encodeURIComponent(selectedDate)}&department=${encodeURIComponent(selectedDepartment)}`
+          `https://kartikeycare-backend.railway.internal/api/appointments/available-slots?date=${encodeURIComponent(selectedDate)}&department=${encodeURIComponent(selectedDepartment)}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch slots");
@@ -81,7 +81,7 @@ const BookingForm = ({ selectedDepartment }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/appointments/book-appointment", {
+      const response = await fetch("https://kartikeycare-backend.railway.internal/api/appointments/book-appointment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(appointmentData),
