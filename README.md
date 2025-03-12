@@ -15,25 +15,25 @@
 
 ## 📸 Screenshots
 ### 🔥 Lighthouse Report
-![Lighthouse Report](https://github.com/user-attachments/assets/4251d015-95ff-454e-8465-96a860c49b31)
+![Lighthouse Report](https://github.com/user-attachments/assets/9bec6d42-89a1-410e-befb-d7788cc365e4)
 
 ### 🏠 Landing Page
-![Landing Page](https://github.com/user-attachments/assets/9bec6d42-89a1-410e-befb-d7788cc365e4)
+![Landing Page](https://github.com/user-attachments/assets/bb64c3ad-feee-4488-96fb-d168000917df)
 
 ### 🏥 Departments Page
-![Departments Page](https://github.com/user-attachments/assets/bb64c3ad-feee-4488-96fb-d168000917df)
+![Departments Page](https://github.com/user-attachments/assets/4c4b96c7-8758-4928-815f-8f7ba7bee87a)
 
 ### ⏳ Slot Selection Page
-![Slot Page](https://github.com/user-attachments/assets/4c4b96c7-8758-4928-815f-8f7ba7bee87a)
+![Slot Page]()
 
 ### 📝 Booking Form
-![Booking Form](https://github.com/user-attachments/assets/0f01b87c-1387-49b1-91e3-b78dbd37463c)
+![Booking Form](https://github.com/user-attachments/assets/6e66e852-ad16-45a6-b0c9-b196727bd4b4)
 
 ### ✅ Confirmation & Download Ticket Popup
-![Confirmation Popup](https://github.com/user-attachments/assets/6e66e852-ad16-45a6-b0c9-b196727bd4b4)
+![Confirmation Popup](https://github.com/user-attachments/assets/4251d015-95ff-454e-8465-96a860c49b31)
 
 ### 🎫 Sample OPD Ticket PDF
-![OPD Ticket PDF](https://github.com/user-attachments/assets/6e66e852-ad16-45a6-b0c9-b196727bd4b4)
+![OPD Ticket PDF]()
 
 📌 *More coming soon! Stay tuned.* 😉
 
