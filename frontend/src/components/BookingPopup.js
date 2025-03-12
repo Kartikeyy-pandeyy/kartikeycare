@@ -8,7 +8,7 @@ const BookingPopup = ({ ticketDetails, onClose }) => {
     try {
         console.log(`Downloading OPD Ticket for: ${ticketDetails.ticketId}`);
 
-        const response = await fetch(`https://kartikeycare-backend.railway.internal/api/opd/generate-ticket/${ticketDetails.ticketId}`, {
+        const response = await fetch(`https://kartikeycare-backend-production.up.railway.app/api/opd/generate-ticket/${ticketDetails.ticketId}`, {
             method: "GET",
         });
 
