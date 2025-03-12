@@ -9,7 +9,7 @@ const LandingPage = () => {
       <div className="landing-content">
         <h2 className="landing-title">Welcome to Kartikey Care</h2>
         <p className="landing-text">
-          Kartikey Care is a hospital that exists only on AWS servers! It offers a real-time OPD slot booking system with live CRUD operations and instant receipt generation. Built using the MERN stack, it ensures seamless booking, real-time updates, and a smooth user experience. Experience the future of virtual healthcare today!
+          Kartikey Care is a hospital that exists nowhere! It offers a real-time OPD slot booking system with live CRUD operations and instant receipt generation. Built using the MERN stack, it ensures seamless booking, real-time updates, and a smooth user experience. Experience the future of virtual healthcare today!
         </p>
 
         {/* Book Appointment Button */}
