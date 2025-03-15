@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import "../style/departments.css";
-import BookingForm from "../components/booking"; // Import BookingForm instead of BookingPopup
+import BookingForm from "../components/booking";
 
 const departmentsData = [
   { name: "Anesthesiology", description: "Pain relief, surgical anesthesia, and critical care management" },
@@ -49,6 +49,10 @@ const Departments = () => {
   const [search, setSearch] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState(null);
 
+  useEffect(() => {
+    setSelectedDepartment(departmentsData[0]); // Default to first department
+  }, []);
+
   const handleDepartmentClick = (department) => {
     setSelectedDepartment(department);
     document.getElementById("booking-form").scrollIntoView({ behavior: "smooth" });
@@ -56,37 +60,36 @@ const Departments = () => {
 
   return (
     <Layout>
-      <div className="departments-wrapper">
+      <div className="departments-page">
         <h2 className="departments-title">Our Departments</h2>
-        <input 
-          type="text" 
-          placeholder="Search departments..." 
+        <input
+          type="text"
+          placeholder="Search departments..."
           className="search-bar"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <div className="departments-container">
+        <div className="departments-grid">
           {departmentsData
-            .filter(dept => 
+            .filter((dept) =>
               dept.name.toLowerCase().includes(search.toLowerCase()) ||
               dept.description.toLowerCase().includes(search.toLowerCase())
             )
             .map((dept, index) => (
-              <div 
-                key={index} 
-                className={`department-card ${selectedDepartment?.name === dept.name ? 'selected' : ''}`} 
+              <div
+                key={index}
+                className={`department-card ${selectedDepartment?.name === dept.name ? "selected" : ""}`}
                 onClick={() => handleDepartmentClick(dept)}
+                style={{ "--index": index }}
               >
                 <h3 className="department-title">{dept.name}</h3>
                 <p className="department-description">{dept.description}</p>
               </div>
-          ))}
+            ))}
         </div>
-      </div>
-      
-      {/* Booking Form Section */}
-      <div id="booking-form" className="booking-form-wrapper">
-        {selectedDepartment && <BookingForm selectedDepartment={selectedDepartment.name} />}
+        <div id="booking-form" className="booking-form-section">
+          {selectedDepartment && <BookingForm selectedDepartment={selectedDepartment.name} />}
+        </div>
       </div>
     </Layout>
   );

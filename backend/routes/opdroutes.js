@@ -40,17 +40,21 @@ router.get("/generate-ticket/:ticketId", async (req, res) => {
         const backgroundImage = await pdfDoc.embedPng(backgroundImageBytes);
         
         // Draw the background image as a watermark
-        page.drawImage(backgroundImage, { x: 0, y: 0, width, height, opacity: 0.1 });
+        page.drawImage(backgroundImage, { x: 0, y: 0, width, height, opacity: 0.9 });
 
         // Add Header with Styling
-        page.drawText("Kartikey Care OPD Ticket", {
-            x: 180,
-            y: height - 60,
-            size: 26,
-            font,
-            color: rgb(0, 0.5, 1),
-            opacity: 0.9,
-        });
+        const text = "OPD Ticket";
+const textWidth = font.widthOfTextAtSize(text, 26);
+const centerX = (width - textWidth) / 2;
+
+page.drawText(text, {
+    x: centerX,  // Centered dynamically
+    y: height - 60,
+    size: 26,
+    font,
+    color: rgb(0.6, 0.3, 0.1),  // Brown color
+    opacity: 0.9,
+});
 
         // Draw a line separator
         page.drawLine({
@@ -140,7 +144,7 @@ details.forEach((text, index) => {
             color: rgb(0.5, 0.5, 0.5),
         });
 
-        page.drawText("Contact: +91 7388109688 | www.demo.com", {
+        page.drawText("Contact: +91 7388109688 | https://kartikeycare.vercel.app/", {
             x: 50,
             y: 35,
             size: 10,

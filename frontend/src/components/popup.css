@@ -1,91 +1,225 @@
-/* Background Blur when Popup Appears */
+/* Popup Overlay */
 .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    backdrop-filter: blur(20px); /* Blurs rest of the content */
+    background: rgba(119, 119, 119, 0.2); /* Lighter translucent gray */
+    backdrop-filter: blur(8px); /* Subtle blur for content */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-}
-
-/* Popup Box with Glassmorphism Effect */
-.popup-content {
-    background: rgba(255, 255, 255, 0.011); /* Semi-transparent for glass effect */
-    padding: 20px;
-    margin-top: 120%;
-    border-radius: 12px;
-    box-shadow: 0px 6px 15px rgba(0, 170, 255, 0.5);
+    animation: fadeIn 0.3s ease-out;
+    padding: clamp(1rem, 5vw, 2rem) clamp(0.5rem, 2vw, 1rem); /* Responsive padding */
+  }
+  
+  /* Animation for overlay */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Popup Content */
+  .popup-content {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 123, 255, 0.1)); /* Brighter gradient */
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+    border-radius: 16px; /* Softer corners */
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 
+      0 10px 25px rgba(0, 0, 0, 0.25), 
+      0 0 30px rgba(0, 123, 255, 0.3); /* Enhanced glow */
+    backdrop-filter: blur(12px); /* Stronger glass effect */
     text-align: center;
-    width: 350px;
-    backdrop-filter: blur(12px);
-    border: 2px solid rgba(0, 170, 255, 0.5);
-}
-
-/* Headings & Text */
-.popup-content h2 {
-    color: white;
-    font-size: 22px;
+    width: 100%;
+    max-width: clamp(300px, 40vw, 450px); /* Responsive width */
+    position: fixed;
+    top: 80%; /* Slightly below center, near confirm button */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: popupSlideIn 0.4s ease-out;
+  }
+  
+  /* Animation for popup content */
+  @keyframes popupSlideIn {
+    from { opacity: 0; transform: translate(-50%, -40%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+  }
+  
+  /* Headings */
+  .popup-content h2 {
+    color: #ffffff;
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
     font-family: "Orbitron", sans-serif;
-    text-shadow: 0 0 8px rgba(0, 170, 255, 0.7);
-    margin-bottom: 10px;
-}
-
-.popup-content p {
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.7); /* Stronger glow */
+    margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+    letter-spacing: 1px; /* Premium spacing */
+  }
+  
+  /* Paragraphs */
+  .popup-content p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    font-family: "Arial", sans-serif;
+    margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+    line-height: 1.6;
+  }
+  
+  .popup-content p strong {
+    color: #40c4ff;
+    font-weight: 600;
+  }
+  
+  /* Advice Text */
+  .advice-text {
+    font-size: clamp(0.75rem, 1.25vw, 0.875rem);
     color: rgba(255, 255, 255, 0.9);
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-/* Buttons */
-.popup-buttons {
+    font-style: italic;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  }
+  
+  /* Button Container */
+  .popup-buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
-}
-
-.download-btn,
-.close-btn {
-    padding: 10px 15px;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    flex-wrap: wrap; /* Wrap on small screens */
+  }
+  
+  /* Buttons */
+  .download-btn,
+  .close-btn {
+    padding: clamp(0.625rem, 1.25vw, 0.875rem) clamp(1.25rem, 2.5vw, 1.75rem); /* Larger padding */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px; /* Softer corners */
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 600;
+    font-family: "Arial", sans-serif;
+    color: #ffffff;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    text-transform: uppercase;
-}
-
-/* Download Button */
-.download-btn {
-    background: rgba(0, 170, 255, 0.3);
-    color: white;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-}
-
-.download-btn:hover {
-    background: rgba(0, 170, 255, 0.5);
-    box-shadow: 0px 0px 12px rgba(0, 170, 255, 0.8);
-}
-
-/* Close Button */
-.close-btn {
-    background: rgba(255, 77, 77, 0.3);
-    color: white;
-}
-
-.close-btn:hover {
-    background: rgba(255, 77, 77, 0.6);
-    box-shadow: 0px 0px 12px rgba(255, 77, 77, 0.8);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 480px) {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.05));
+    min-width: clamp(120px, 25vw, 160px); /* Ensure readable width */
+  }
+  
+  /* Button Hover Shine Effect */
+  .download-btn::before,
+  .close-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: all 0.5s ease;
+    z-index: 0;
+  }
+  
+  .download-btn:hover::before,
+  .close-btn:hover::before {
+    left: 100%;
+  }
+  
+  /* Download Button */
+  .download-btn {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.3), rgba(64, 196, 255, 0.2));
+  }
+  
+  .download-btn:hover {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.5), rgba(64, 196, 255, 0.35));
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.6);
+    transform: translateY(-2px);
+  }
+  
+  /* Close Button */
+  .close-btn {
+    background: linear-gradient(135deg, rgba(255, 77, 77, 0.3), rgba(255, 128, 128, 0.2));
+  }
+  
+  .close-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 77, 77, 0.5), rgba(255, 128, 128, 0.35));
+    box-shadow: 0 6px 15px rgba(255, 77, 77, 0.6);
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive Adjustments */
+  @media (min-width: 1025px) { /* Laptops */
     .popup-content {
-        width: 90%;
+      max-width: 450px;
     }
-}
+    .popup-content h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    .popup-content p {
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+    }
+    .advice-text {
+      font-size: clamp(0.875rem, 1.25vw, 1rem);
+    }
+    .download-btn,
+    .close-btn {
+      font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+      min-width: 160px;
+    }
+  }
+  
+  @media (max-width: 768px) { /* Tablets */
+    .popup-content {
+      max-width: 360px;
+    }
+    .popup-content h2 {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    }
+    .popup-content p {
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+    }
+  }
+  
+  @media (max-width: 480px) { /* Smartphones */
+    .popup-content {
+      width: 90%;
+      max-width: 320px;
+      padding: clamp(1rem, 2vw, 1.5rem);
+      top: 85%; /* Slightly lower on smaller screens */
+    }
+    .popup-content h2 {
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    }
+    .popup-content p {
+      font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+    }
+    .advice-text {
+      font-size: clamp(0.625rem, 1vw, 0.75rem);
+    }
+    .download-btn,
+    .close-btn {
+      padding: clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem);
+      font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+      min-width: 120px;
+    }
+    .popup-buttons {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+  
+  /* Performance Optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .popup-overlay,
+    .popup-content,
+    .download-btn,
+    .close-btn {
+      animation: none;
+      transition: none;
+    }
+    .download-btn::before,
+    .close-btn::before {
+      transition: none;
+    }
+  }

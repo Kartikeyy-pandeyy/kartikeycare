@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import BookingPopup from "./BookingPopup.js";
 import "./booking.css";
 
@@ -11,39 +11,31 @@ const BookingForm = ({ selectedDepartment }) => {
   const [showPopup, setShowPopup] = useState(false);
   const formRef = useRef(null);
 
-  // Initialize Dates (Skipping Sundays)
-  const today = new Date();
-  const tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
+  const { todayString, tomorrowString } = useMemo(() => {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
 
-  if (today.getDay() === 6) {
-    tomorrow.setDate(today.getDate() + 2);
-  } else if (today.getDay() === 0) {
-    today.setDate(today.getDate() + 1);
-  }
+    if (today.getDay() === 6) tomorrow.setDate(today.getDate() + 2); // Skip Sunday
+    else if (today.getDay() === 0) today.setDate(today.getDate() + 1); // Skip Sunday
 
-  const formatDate = (date) =>
-    `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
-
-  const todayString = formatDate(today);
-  const tomorrowString = formatDate(tomorrow);
+    const formatDate = (date) =>
+      `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
+    return { todayString: formatDate(today), tomorrowString: formatDate(tomorrow) };
+  }, []);
 
   useEffect(() => {
     setSelectedDate(todayString);
   }, [todayString]);
 
-  // Fetch Available Slots
   useEffect(() => {
     const fetchSlots = async () => {
       if (!selectedDepartment || !selectedDate) return;
-
       try {
         const response = await fetch(
           `https://kartikeycare-backend-production.up.railway.app/api/appointments/available-slots?date=${encodeURIComponent(selectedDate)}&department=${encodeURIComponent(selectedDepartment)}`
         );
-
         if (!response.ok) throw new Error("Failed to fetch slots");
-
         const data = await response.json();
         setAvailableSlots(data.availableSlots || []);
       } catch (error) {
@@ -51,42 +43,29 @@ const BookingForm = ({ selectedDepartment }) => {
         alert("Error fetching available slots. Please try again.");
       }
     };
-
     fetchSlots();
   }, [selectedDate, selectedDepartment]);
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
-    if (name === "age" && value < 1) return;
+    if (name === "age" && (value < 1 || value > 150)) return;
     if (name === "phone" && !/^[0-9]*$/.test(value)) return;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const bookAppointment = async () => {
-    if (!selectedSlot) {
-      alert("Please select a slot before confirming.");
-      return;
-    }
-
+    if (!selectedSlot) return alert("Please select a slot.");
     if (!formData.name || !formData.age || !formData.phone || !formData.address) {
-      alert("All fields are required. Please fill them in.");
-      return;
+      return alert("All fields are required.");
     }
 
-    const appointmentData = {
-      department: selectedDepartment,
-      date: selectedDate,
-      slot: selectedSlot,
-      ...formData,
-    };
-
+    const appointmentData = { department: selectedDepartment, date: selectedDate, slot: selectedSlot, ...formData };
     try {
       const response = await fetch("https://kartikeycare-backend-production.up.railway.app/api/appointments/book-appointment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(appointmentData),
       });
-
       const data = await response.json();
       if (response.ok) {
         setTicketDetails(data);
@@ -101,26 +80,27 @@ const BookingForm = ({ selectedDepartment }) => {
   };
 
   return (
-    <div ref={formRef} className="booking-form-container">
+    <form ref={formRef} className="booking-form">
       <h2 className="booking-title">Book an Appointment</h2>
       {selectedDepartment && (
         <p className="booking-subtitle">
-          Department: <strong>{selectedDepartment}</strong>
+          Department: <span>{selectedDepartment}</span>
         </p>
       )}
 
-      <label>Date:</label>
+      <label>Date</label>
       <select value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)}>
         <option value={todayString}>Today ({todayString})</option>
         <option value={tomorrowString}>Tomorrow ({tomorrowString})</option>
       </select>
 
-      <label>Available Slots:</label>
+      <label>Available Slots</label>
       <div className="slot-grid">
         {availableSlots.length > 0 ? (
           availableSlots.map((slot, index) => (
             <button
               key={index}
+              type="button" // Prevent form submission
               className={`slot-btn ${selectedSlot === slot ? "selected" : ""}`}
               onClick={() => setSelectedSlot(slot)}
             >
@@ -128,31 +108,29 @@ const BookingForm = ({ selectedDepartment }) => {
             </button>
           ))
         ) : (
-          <p>No slots available for this date.</p>
+          <p>No slots available.</p>
         )}
       </div>
 
-      <label>Name:</label>
-      <input type="text" name="name" value={formData.name} onChange={handleFormChange} required />
-      <label>Age:</label>
-      <input type="number" name="age" value={formData.age} onChange={handleFormChange} required />
-      <label>Phone:</label>
-      <input type="text" name="phone" value={formData.phone} onChange={handleFormChange} required />
-      <label>Address:</label>
-      <textarea name="address" value={formData.address} onChange={handleFormChange} required />
+      <label>Name</label>
+      <input type="text" name="name" value={formData.name} onChange={handleFormChange} />
+      <label>Age</label>
+      <input type="number" name="age" value={formData.age} onChange={handleFormChange} />
+      <label>Phone</label>
+      <input type="text" name="phone" value={formData.phone} onChange={handleFormChange} maxLength="10" />
+      <label>Address</label>
+      <textarea name="address" value={formData.address} onChange={handleFormChange} />
 
-      <div className="booking-buttons">
-        <button onClick={bookAppointment} className="confirm-btn" disabled={!selectedSlot}>
-          Confirm
-        </button>
-      </div>
+      <button type="button" onClick={bookAppointment} className="confirm-btn" disabled={!selectedSlot}>
+        Confirm
+      </button>
 
       {showPopup && ticketDetails && (
         <div className="popup-wrapper">
           <BookingPopup ticketDetails={ticketDetails} onClose={() => setShowPopup(false)} />
         </div>
       )}
-    </div>
+    </form>
   );
 };
 
