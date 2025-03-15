@@ -11,7 +11,12 @@ connectDB();
 
 const app = express();
 
-app.use(cors({ origin: "*" })); // ✅ Secure CORS Policy (Adjust if needed)
+app.use(cors({
+    origin: ["https://kartikeycare.vercel.app/", "http://localhost:3000"], // Add your frontend URL(s)
+    methods: ["GET", "POST", "PUT", "DELETE"], // Limit HTTP methods if needed
+    allowedHeaders: ["Content-Type", "Authorization"], // Restrict headers if needed
+}));
+ // ✅ Secure CORS Policy (Adjust if needed)
 app.use(express.json());
 
 app.use("/api/appointments", appointmentRoutes);

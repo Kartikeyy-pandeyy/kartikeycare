@@ -16,11 +16,20 @@ const BookingForm = ({ selectedDepartment }) => {
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
 
-    if (today.getDay() === 6) tomorrow.setDate(today.getDate() + 2); // Skip Sunday
-    else if (today.getDay() === 0) today.setDate(today.getDate() + 1); // Skip Sunday
+    // If today is Sunday, set today to Monday
+    if (today.getDay() === 0) {
+      today.setDate(today.getDate() + 1);
+      tomorrow.setDate(today.getDate() + 1);
+    }
+
+    // If tomorrow is Sunday, set tomorrow to Monday
+    if (tomorrow.getDay() === 0) {
+      tomorrow.setDate(tomorrow.getDate() + 1);
+    }
 
     const formatDate = (date) =>
       `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
+
     return { todayString: formatDate(today), tomorrowString: formatDate(tomorrow) };
   }, []);
 
@@ -33,7 +42,7 @@ const BookingForm = ({ selectedDepartment }) => {
       if (!selectedDepartment || !selectedDate) return;
       try {
         const response = await fetch(
-          `https://kartikeycare-backend-production.up.railway.app/api/appointments/available-slots?date=${encodeURIComponent(selectedDate)}&department=${encodeURIComponent(selectedDepartment)}`
+          `https://kartikeycare-backend.railway.app/api/appointments/available-slots?date=${encodeURIComponent(selectedDate)}&department=${encodeURIComponent(selectedDepartment)}`
         );
         if (!response.ok) throw new Error("Failed to fetch slots");
         const data = await response.json();
@@ -61,7 +70,7 @@ const BookingForm = ({ selectedDepartment }) => {
 
     const appointmentData = { department: selectedDepartment, date: selectedDate, slot: selectedSlot, ...formData };
     try {
-      const response = await fetch("https://kartikeycare-backend-production.up.railway.app/api/appointments/book-appointment", {
+      const response = await fetch("https://kartikeycare-backend.railway.app/api/appointments/book-appointment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(appointmentData),
@@ -90,8 +99,8 @@ const BookingForm = ({ selectedDepartment }) => {
 
       <label>Date</label>
       <select value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)}>
-        <option value={todayString}>Today ({todayString})</option>
-        <option value={tomorrowString}>Tomorrow ({tomorrowString})</option>
+        <option value={todayString}>{todayString}</option>
+        <option value={tomorrowString}>{tomorrowString}</option>
       </select>
 
       <label>Available Slots</label>

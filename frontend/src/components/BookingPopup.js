@@ -4,29 +4,17 @@ import "./popup.css";
 const BookingPopup = ({ ticketDetails, onClose }) => {
   if (!ticketDetails) return null;
 
-  const handleDownload = async () => {
+  const handleDownload = () => {
     try {
       console.log(`Downloading OPD Ticket for: ${ticketDetails.ticketId}`);
-      const response = await fetch(
-        `https://kartikeycare-backend-production.up.railway.app/api/opd/generate-ticket/${ticketDetails.ticketId}`,
-        { method: "GET" }
+
+      // Open the download link in a new tab to avoid CORS/security issues
+      window.open(
+        `https://kartikeycare-backend.railway.app/api/opd/generate-ticket/${ticketDetails.ticketId}`,
+        "_blank"
       );
 
-      if (!response.ok) {
-        throw new Error(`Failed to generate OPD ticket. Status: ${response.status}`);
-      }
-
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `OPD_Ticket_${ticketDetails.ticketId}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-
-      console.log(`OPD Ticket for ${ticketDetails.ticketId} downloaded successfully.`);
+      console.log(`OPD Ticket for ${ticketDetails.ticketId} download initiated.`);
     } catch (error) {
       console.error("Download failed:", error);
       alert("Error generating OPD Ticket. Please try again.");
