@@ -1,4 +1,3 @@
-// server.js (Updated)
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -11,14 +10,19 @@ connectDB();
 
 const app = express();
 
-app.use(cors({
-    origin: ["https://kartikeycare.vercel.app/", "http://localhost:3000"], // Add your frontend URL(s)
-    methods: ["GET", "POST", "PUT", "DELETE"], // Limit HTTP methods if needed
-    allowedHeaders: ["Content-Type", "Authorization"], // Restrict headers if needed
-}));
- // ✅ Secure CORS Policy (Adjust if needed)
+// ✅ Allow CORS from anywhere
+app.use(
+    cors({
+      origin: "*", // Allow all origins (or specify frontend URL for security)
+      methods: "GET,POST,PUT,DELETE",
+      allowedHeaders: "Content-Type",
+    })
+  );
+  
+
 app.use(express.json());
 
+// ✅ Register Routes
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/opd", opdRoutes);
 
