@@ -42,7 +42,7 @@ const BookingForm = ({ selectedDepartment }) => {
       if (!selectedDepartment || !selectedDate) return;
       try {
         const response = await fetch(
-          `https://app--kartikeycare--qdcdgcn72xq9.code.run/api/appointments/available-slots?date=${encodeURIComponent(selectedDate)}&department=${encodeURIComponent(selectedDepartment)}`
+          `https://site--kartikeycare--qdcdgcn72xq9.code.run/api/appointments/available-slots?date=${encodeURIComponent(selectedDate)}&department=${encodeURIComponent(selectedDepartment)}`
         );
         if (!response.ok) throw new Error("Failed to fetch slots");
         const data = await response.json();
@@ -70,7 +70,7 @@ const BookingForm = ({ selectedDepartment }) => {
 
     const appointmentData = { department: selectedDepartment, date: selectedDate, slot: selectedSlot, ...formData };
     try {
-      const response = await fetch("https://app--kartikeycare--qdcdgcn72xq9.code.run/api/appointments/book-appointment", {
+      const response = await fetch("https://site--kartikeycare--qdcdgcn72xq9.code.run/api/appointments/book-appointment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(appointmentData),
