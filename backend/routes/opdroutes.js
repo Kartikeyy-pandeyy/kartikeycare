@@ -211,7 +211,7 @@ router.get("/generate-ticket/:ticketId", async (req, res) => {
 
     // Visit Guidelines Section
     const guidelines = [
-      "Please arrive 15 minutes prior to your scheduled slot with ID and medical records.",
+      "Please arrive 15 minutes prior to your scheduled slot.",
       "Adhere to social distancing and follow all hospital safety protocols.",
       "For assistance, contact our reception desk or call the emergency number.",
       "Emergency Contact: +91 7388109688",
@@ -245,14 +245,14 @@ router.get("/generate-ticket/:ticketId", async (req, res) => {
       font: helveticaBold,
       color: COLORS.DARK_BROWN,
     });
-    page.drawText("123 Health Street, Gorakhpur, UP 273001", {
+    page.drawText("Taramandal, Gorakhpur, UP 273017", {
       x: (width - helvetica.widthOfTextAtSize("123 Health Street, Gorakhpur, UP 273001", 12)) / 2,
       y: 90,
       size: 12,
       font: helvetica,
       color: COLORS.MEDIUM_BROWN,
     });
-    const contactText = "Contact: +91 7388109688 | support@kartikeycare.com | kartikeycare.vercel.app";
+    const contactText = "Contact: +91 7388109688 | kartikeyy.pandeyy@gmail.com | kartikeycare.vercel.app";
     page.drawText(contactText, {
       x: (width - helvetica.widthOfTextAtSize(contactText, 12)) / 2,
       y: 73,

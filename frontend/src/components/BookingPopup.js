@@ -10,7 +10,7 @@ const BookingPopup = ({ ticketDetails, onClose }) => {
 
       // Open the download link in a new tab to avoid CORS/security issues
       window.open(
-        `https://kartikeycare-backend-production.up.railway.app/api/opd/generate-ticket/${ticketDetails.ticketId}`,
+        `https://app--kartikeycare--qdcdgcn72xq9.code.run/api/opd/generate-ticket/${ticketDetails.ticketId}`,
         "_blank"
       );
 
